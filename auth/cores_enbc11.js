@@ -141,7 +141,7 @@ const us = account['address'];
 const refLink = $("#input-ref");
 const refLinks = $("#refLink");
 
-const link = "https://lk.polsage.online/auth/stake?ref=" + us;
+const link = "https://lk.polsage.github.io/auth/stake?ref=" + us;
 
 
 function formatCurrency(number, decimalPlaces = 8) {
