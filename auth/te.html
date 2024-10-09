@@ -1,0 +1,555 @@
+
+<!DOCTYPE html> 
+<html lang="en"> 
+    
+
+<head> 
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0D9MG54D8"></script>
+        <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M0D9MG54D8');
+  
+  </script>
+  <style>
+        /* Style for the countdown text */
+        .blue-text {
+            color: rgb(110, 23, 150);
+        text-shadow: 
+            0 0 5px #fff, 
+            0 0 10px #fff, 
+            0 0 15px #fff, 
+            0 0 20px #fff, 
+            0 0 25px #fff;
+        font-weight: bold;
+        font-size: 1em;
+        }
+    </style>
+  
+  
+  
+
+        <style>.wf-force-outline-none[tabindex="-1"]:focus { outline: none; }</style>         
+        <meta charset="utf-8"> 
+        <title>Neo Polygon - Matic Staking</title>         
+        <meta content="width=device-width, initial-scale=1" name="viewport"> 
+        <meta content="Webflow" name="generator">
+        <meta property="og:image" content="neopol.png"/> 
+        <meta name="description" content="Protected" />
+        <link href="css.css" rel="stylesheet" type="text/css"> 
+        <link href="https://fonts.googleapis.com/" rel="preconnect"> 
+        <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin="anonymous"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>         
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" media="all"> 
+        <script type="text/javascript">
+	WebFont.load({  google: {    families: ["Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"]  }});
+	</script>  
+<!-- <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Aug 23, 2024 12:00:00 UTC").getTime();
+
+    // Update the countdown every 1 second
+    var countdownFunction = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+
+        // Calculate time remaining
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="countdown"
+        document.getElementById("countdown").innerHTML = 
+            "Launching on  Aug 23, 2024 -  " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        // If the countdown is finished, write some text
+        if (distance < 0) {
+            clearInterval(countdownFunction);
+            document.getElementById("countdown").innerHTML = "Launched";
+        }
+    }, 1000);
+</script> -->
+        <script type="text/javascript">
+	!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);
+	</script> 
+	 <script>
+    async function fetchBalance() {
+        const contractAddress = '0x66a5d1f57fd25acb257882f5df6685157d76472d';
+        const apiKey = 'YHBZX1M27QQ8655S27WUAG62E9JXE6KRJ6'; 
+        const url = `https://api.polygonscan.com/api?module=account&action=balance&address=${contractAddress}&tag=latest&apikey=${apiKey}`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.status === '1') {
+                const balanceInWei = data.result;
+                const balanceInMatic = balanceInWei / (10 ** 18);
+
+                // Format balance with commas and four decimal places
+                const formattedBalance = balanceInMatic.toLocaleString(undefined, {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                });
+
+                document.getElementById('matic-balance').innerText = formattedBalance + ' POL';
+            } else {
+                console.error('Error fetching balance:', data.message);
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+        }
+    }
+
+    // Fetch balance every 30 seconds
+    setInterval(fetchBalance, 30000);
+
+    // Initial fetch on page load
+    window.onload = fetchBalance;
+</script>
+        <link href="neopol.png" rel="shortcut icon" type="image/x-icon"> 
+        <link href="neopol.png" rel="apple-touch-icon"> 
+        <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>         
+        <link href="core_js/toastify.css" rel="stylesheet" type="text/css"/> 
+        <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap'); * { padding: 0; margin: 0; box-sizing: border-box; } .container button { border: 0; padding: 10px 24px; font-size: 18px; font-family: 'Poppins',sans-serif; border-radius: 6px; background: #7440ff; color: #fff; cursor: pointer; } .toast-box { display: flex; position: absolute; width: 420px; background: #fff; padding: 12px 18px; border-radius: 8px; box-shadow: 1px 2px 4px 2px rgb(227, 222, 222); gap: 20px; align-items: center; border-left: 4px solid #7440ff; visibility: hidden;  /* *** alignment * */ top: 0; right: 0; margin: 20px; } .toast-box.active { visibility: visible; } .toast-box .toast-box-icon { background: #7440ff; padding: 5px 8px; border-radius: 100%; } .toast-box .toast-box-icon .bx { font-size: 32px; color: #fff; } .toast-box .toast-box-text { position: relative; text-align: left; } .toast-box-text .toast-heading { font-size: 18px; font-weight: 600; color: #1a1a1a; } .toast-box-text .toast-description { font-size: 16px; font-weight: 400; color: #3d3d3d; } .toast-box .toast-close { position: absolute; display: block; top: 0; right: 0; padding: 4px; font-size: 24px; cursor: pointer; }</style>         
+    </head>     
+    <body class="body"> 
+        <div class="toast-box"> 
+            <div class="toast-box-icon"> <i class='bx bx-check'></i> 
+            </div>             
+            <div class="toast-box-text"> 
+                <p class="toast-heading">Success</p> 
+                <p class="toast-description">Your changes saved successfully!</p> 
+            </div>             
+            <div class="toast-close"> <i class='bx bx-x'></i> 
+            </div>             
+        </div>         
+        <div class="all-content"> 
+            <section class="main-block wf-section">
+                <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav"> 
+                    <div class="nav-container w-container">
+                        <a href="#"><img src="Pic/move-stake.png" sizes="71vw,
+(min-width: 360px) 100px,
+(min-width: 479px) 21vw,
+(min-width: 768px) 130px,
+(min-width: 991px) 13vw,
+(min-width: 1920px) 130px" alt="" class="image"></a>                          
+                        <div class="nav-button-wr"><a href="#" class="nav-button-start w-button" style="background-color: #ffffff00;"><w3m-core-button></w3m-core-button></a> 
+                        </div>
+                        <div class="menu-button w-nav-button" style="-webkit-user-select: text;" aria-label="menu" role="button" tabindex="0" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false"> 
+</div>                         
+                    </div>                     
+                    <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div>                     
+                </div>                 
+                <section>
+        <div class="w-layout-blockcontainer intro-wrapper w-container">
+            <a href="#" class="button-mobile w-button" style="background-color: #ffffff00;">
+                <w3m-core-button></w3m-core-button>
+            </a>
+            <h1 class="intro-heading">
+  <span class="gradient-color-span"></span>
+</h1>
+
+<div style="text-align: center;">
+    <h1 class="intro-heading">
+        <span class="gradient-color-span" style="color: grey;">Contract Balance</span>
+    </h1>
+    <div style="border: 2px solid blue; padding: 20px; display: inline-block; border-radius: 10px;">
+        <h1 class="title-main blue" style="margin: 0; text-align: center;">
+            <span id="matic-balance" style="color: white; font-weight: bold; font-size: 1em;">Loading...</span>
+        </h1>
+    </div>
+</div>
+<h1 class="tables-main-head">Active Users : 2470+</h1> 
+<h1 class="tables-main-head">Launched on: August 28, 2024 </h1> 
+    </section>
+            </section> <div class="w-layout-blockcontainer tbles-po-ref-wrapper w-container"> 
+          
+           <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <iframe id="dextools-widget"
+        title="DEXTools Trading Chart"
+        width="500" height="400"
+        src="https://www.dextools.io/widget-chart/en/polygon/pe-light/0xbefff44e173c9122627b58dc694ef9243e34fd88?theme=light&chartType=2&chartResolution=30&drawingToolbars=false"
+        style="border: none;">
+    </iframe>
+</div>
+<center>
+    <a href="https://s.id/npcstore">
+        <img src="Pic/buysell.png" alt="Smart Contract">
+        <span></span>
+    </a>
+</center>
+
+                <div id="w-node-_0f11e1ae-ae82-9a2c-50a1-9494c5863b94-6582eea1" class="w-layout-layout quick-stack-3 wf-layout-layout"> 
+                    <div id="w-node-a669f4da-7a1d-bcb0-a454-217394fc9e30-6582eea1" class="w-layout-cell cell"> 
+                        <h1 class="po-heading">NEO POLYGON STAKING PLANS:</h1> 
+                        <div class="table-po-info-block"> 
+                            <div class="po-info-table"> 
+                                <div class="table-mi-head" style="color: #cd7f32;">Bronze</div> <!-- Apply bronze color -->
+                                <img src="poly.gif" alt="Plan 1 Image">
+                                <div class="po-head">1 - 300&nbsp;<span class="color-span">POL</span>
+                                </div>                                     
+                                <div class="po-percent-text">2.0% per Day</div>
+                                <div class="po-percent-text">85 Days</div>
+                                <div class="po-percent-text">Total Profit 170%</div>                                     
+                                <div class="mini-table-info"> 
+                                    <div class="mini-card-text-wr"> 
+                                        <div class="mini-card-text">Hold bonus:</div>                                             
+                                    </div>                                         
+                                    <div class="mini-card-value-wr"> 
+                                        <div class="mini-card-value">+0.02% per day</div>                                             
+                                    </div>                                         
+                                </div>                                     
+                            </div>                                 
+                            <div class="po-info-table"> 
+                                <div class="table-mi-head" style="color: silver;">Silver&nbsp;</div> <!-- Apply silver color -->
+                                <img src="poly.gif" alt="Plan 1 Image">
+                                <div class="po-head">301 - 3,000&nbsp;<span class="color-span">POL</span>
+                                </div>                                     
+                                <div class="po-percent-text">2.5% per Day</div>
+                                <div class="po-percent-text">For 60 Days</div>
+                                <div class="po-percent-text">Total Profit 150%</div>                                     
+                                <div class="mini-table-info"> 
+                                    <div class="mini-card-text-wr"> 
+                                        <div class="mini-card-text">Hold bonus:</div>                                             
+                                    </div>                                         
+                                    <div class="mini-card-value-wr"> 
+                                        <div class="mini-card-value">+0.02% per day</div>                                             
+                                    </div>                                         
+                                </div>                                     
+                            </div>
+                            <div class="po-info-table"> 
+                                <div class="table-mi-head" style="color: gold;">Gold</div> <!-- Apply gold color -->
+                                <img src="poly.gif" alt="Plan 1 Image">
+                                <div class="po-head">3,001 - 5,000&nbsp;<span class="color-span">POL</span>
+                                </div>                                     
+                                <div class="po-percent-text">3% per Day</div>
+                                <div class="po-percent-text"><span style="font-size: 1em;">For 45 Days</span><span style="font-family: monospace; font-size: 1em;">&nbsp;</span>
+                                </div>
+                                <div class="po-percent-text">Total Profit 135%</div>                                     
+                                <div class="mini-table-info"> 
+                                    <div class="mini-card-text-wr"> 
+                                        <div class="mini-card-text">Hold bonus:</div>                                             
+                                    </div>                                         
+                                    <div class="mini-card-value-wr"> 
+                                        <div class="mini-card-value">+0.02% per day</div>                                             
+                                    </div>                                         
+                                </div>                                     
+                            </div>                                 
+                        </div>                             
+                    </div>      
+            
+            
+
+            <section class="tables-section wf-section"> 
+                <h1 class="tables-main-head">STAKE POL</h1> 
+                <div id="work" class="transfer-div"></div>                 
+                <div class="w-layout-blockcontainer tables-wrapper w-container"> 
+                    <div id="w-node-_50749a03-4c72-6550-f93c-dc0886f8abd5-6582eea1" class="w-layout-layout quick-stack-2 wf-layout-layout"> 
+                        <div id="w-node-_50749a03-4c72-6550-f93c-dc0886f8abd6-6582eea1" class="w-layout-cell table-mi"> 
+                            <h1 class="table-mi-head">INCOME ANALYZER</h1> 
+                            <div class="table-calculator-wr"> 
+                                <div class="table-grid"> 
+                                    <div id="w-node-b168f524-54a5-5136-ab6d-2f17c8ee78fe-6582eea1" class="calculator-block"> 
+                                        <div class="calcul-head-text">Staking:<br>
+                                        </div>                                         
+                                        <div class="calcul-number-text" id='cs'>1 <span class="color-span">POL</span>
+                                        </div>                                         
+                                    </div>                                     
+                                    <div id="w-node-_96c532bd-0331-393c-ce29-e99f642236f0-6582eea1" class="calculator-block"> 
+                                        <div class="calcul-head-text">Profit:<br>
+                                        </div>                                         
+                                        <div class="calcul-number-text" id='cp'>0.02 <span class="color-span">POL per day</span>
+                                        </div>                                         
+                                    </div>                                     
+                                    <div id="w-node-e4cebfb4-3045-7a94-fe6d-6983e12d888f-6582eea1" class="calculator-block"> 
+                                        <div class="calcul-head-text">Till next Plan:<br>
+                                        </div>                                         
+                                        <div class="calcul-number-text" id='cn'>300 <span class="color-span">POL</span>
+                                        </div>                                         
+                                    </div>                                     
+                                    <div id="w-node-e2a41b2b-f501-1f55-d4e2-d09953a529b1-6582eea1" class="calculator-block"> 
+                                        <div class="calcul-head-text">Minimum Percent:<br>
+                                        </div>                                         
+                                        <div class="calcul-number-text" id='cpr'>2% <span class="color-span">per day</span>
+                                        </div>                                         
+                                    </div>                                     
+                                </div>                                 
+                            </div>                             
+                            <div class="calculator-text-wr"> 
+                                <div class="calculator-text" id='cprt'>Enter Stake Amount <span class="color-span"> </span>) :
+                                </div>                                 
+                            </div>                             
+                            <div class="calculator-wrapper"> 
+                                <div class="form-block w-form"> 
+                                    <input type="number" class="input-calcul w-input" maxlength="256" oninput="na()" name="name" value="1" id="name"> 
+                                    <style>@keyframes spinner-border { to {  transform: rotate(360deg); } } .spinner { display: inline-block; width: 2rem; height: 2rem; vertical-align: -0.125em; color: #ffffff; border: 0.25em solid currentcolor; border-right-color: transparent; border-radius: 50%; -webkit-animation: .75s linear infinite spinner-border; animation: .75s linear infinite spinner-border; } .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; } .btn { display: inline-block; font-weight: 400; color: #212529; text-align: center; vertical-align: middle; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; background-color: transparent; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 0.25rem; } .btn-primary { color: #fff; background-color: #007bff; border-color: #007bff; } .btn:disabled { opacity: .65; } .btn .spinner { color: #fff; width: 1rem; height: 1rem; vertical-align: middle; } .text-success { color: #28a745!important; } .text-danger { color: #dc3545!important; } .text-warning { color: #ffc107!important; } .text-info { color: #17a2b8!important; } .text-secondary { color: #6c757d!important; } .btn-success { color: #fff; background-color: #28a745; border-color: #28a745; } .btn-danger { color: #fff; background-color: #dc3545; border-color: #dc3545; } .btn-warning { color: #212529; background-color: #ffc107; border-color: #ffc107; } .btn-info { color: #fff; background-color: #17a2b8; border-color: #17a2b8; } .btn-secondary { color: #fff; background-color: #6c757d; border-color: #6c757d; }</style>                                     
+                                </div>                                 
+                                <div class="calculator-btn-wr">
+                                    <a id='investButton' class="calculator-btn w-button"> STAKE</a>
+                                </div>                                 
+                            </div>                             
+                            <div class="table-aw-button-wr"><a data-w-id="f5895475-e2e0-5574-6a00-8839cf087a2f" href="#" class="awards-button-two w-button" target="_blank">Minimum 1 POL</a>
+                            </div>
+                            <div class="table-aw-button-wr"><a data-w-id="f5895475-e2e0-5574-6a00-8839cf087a2f" href="#" class="awards-button-two w-button" target="_blank">Maximum 5,000 POL</a>
+                            </div> 
+                        </div>                         
+                        <script>
+							
+							
+function na()
+{
+var val = $("#name").val();
+$("#cs").html(Number(val).toFixed(2) + " <span class='color-span'>POL</span>");
+if (!$('#name').val()) {
+$("#cs").html("0.1 <span class='color-span'>POL</span>");
+}
+ var pj = 2.0;
+    var vs = 1.0;
+    var oo = 0.02;
+
+    if (val >= 1 && val <= 300) {
+        pj = 2.0;
+        vs = 301.0;
+        oo = 0.02;
+    } else if (val >= 301 && val <= 3000) {
+        pj = 2.5;
+        vs = 3001.0;
+        oo = 0.02;
+    } else if (val >= 3001 && val <= 5000) {
+        pj = 3.0;
+        oo = 0.02;
+    } else if (val < 1) {
+        pj = 2.0; // or whatever you want for values less than 1
+        vs = 1.0;
+        oo = 0.02;
+    } else {
+        pj = 3.0; // Default case if needed
+        oo = 0.02;
+    }
+
+    var cp = val * pj / 100;
+
+    var cz;
+    if (val >= 5001) {
+}
+else
+{
+var cz = vs-val;
+}
+//You wiil get: 2.0% or 0.1250 <span class="color-span">MATIC</span> daily
+
+$("#cp").html(Number(cp).toFixed(3) + " <span class='color-span'>POL per day</span>");
+$("#cpr").html(pj + "% <span class='color-span'>per day</span>");
+$("#cprt").html("You wiil get: " + pj + "%" + " or " + Number(cp).toFixed(3) + "<span class='color-span'> MATIC</span> daily");
+
+$("#cn").html(Number(cz).toFixed(2) + " <span class='color-span'>POL</span>");
+$("#ssc").html("If you don`t withdraw, your profit growth by +" + оо +"% daily.");
+
+
+}		
+							
+							
+							
+							
+/*							
+$('#name').on('keydown', function () {
+
+var val = $("#name").val();
+$("#cs").html(val + " <span class='color-span'>MATIC</span>");
+if (!$('#name').val()) {
+$("#cs").html("0.1 <span class='color-span'>MATIC</span>");
+}
+
+var pj = 0;
+if(val > 0.1 && val < 1)
+{
+	pj = 2;
+}
+else if(val > 1 && val < 10)
+{
+	pj = 2.5;
+} else if(val > 50)
+{
+	pj = 3;
+}
+	
+
+
+var cp = val*pj/100;
+
+
+
+
+$("#cp").html(cp + " <span class='color-span'>MATIC</span>");
+
+
+
+});
+
+*/
+</script>                         
+                        <div id="w-node-_50749a03-4c72-6550-f93c-dc0886f8abd7-6582eea1" class="w-layout-cell table-awards"> 
+                            <h1 class="table-award-head">MY STATS</h1> 
+                            <div class="table-aw-wr" style="margin-bottom: 30px;"> 
+                                <div class="table-aw-grid"> 
+                                    <div id="w-node-c78ba78b-bb77-c403-7df5-bdf44dedbf36-6582eea1" class="awards-block"> 
+                                        <div class="awards-head">Your Total Staked:</div>                                         
+                                        <div class="awards-number" id='getUserTotalDeposits'>0.000 <span class="color-span">POL</span>
+                                        </div>                                         
+                                    </div>                                     
+                                    <div id="w-node-_148666f2-f5cd-c819-b4cf-fea94ca91dfc-6582eea1" class="awards-block"> 
+                                        <div class="awards-head">Your Withdrawn:</div>                                         
+                                        <div class="awards-number" id='getUserTotalWithdrawn'>0.000 <span class="color-span">POL</span>
+                                        </div>                                         
+                                    </div>                                     
+                                    <div id="w-node-ba6adaf3-06b0-7d77-c2c4-c2a9769e20ac-6582eea1" class="awards-block"> 
+                                        <div class="awards-head">Your Earnings:<br>
+                                        </div>                                         
+                                        <div class="awards-number" id='getUserAvailable'>0.000 <span class="color-span">POL</span>
+                                        </div>                                         
+                                    </div>                                     
+                                    <div id="w-node-_06226046-2094-5183-88b9-0a62fbaf8bf3-6582eea1" class="awards-block"> 
+                                        <div class="awards-head">Your Basic Percent:</div>                                         
+                                        <div class="awards-number" id='percentuser'>0% <span class="color-span">per day</span>
+                                        </div>                                         
+                                    </div>                                     
+                                </div>                                 
+                            </div>                             
+                            <div class="table-aw-button-wr">
+                                <a id='withdrawButton' class="awards-button w-button">WITHDRAW 90%</a>
+                            </div>
+                            <div class="table-aw-button-wr"><a data-w-id="f5895475-e2e0-5574-6a00-8839cf087a2f" href="#" class="awards-button-two w-button" target="_blank">Note: 10% Contract Stabilization on Withdrawal</a>
+                            </div>        
+                            
+                                <div class="information-text" id='ssc1'></div>                                 
+                            </div>                             
+                        </div>                         
+                    </div>                     
+                </div>                 
+                         
+                        <div id="w-node-e066c9a6-8184-7907-9297-917354d3727e-6582eea1" class="w-layout-cell table-ref"> 
+                            <h1 class="ref-heading"><br></h1> 
+                            <div class="ref-link-wrapper"> 
+                                <div class="ref-link-basis"> 
+                                                                        
+                                   
+                                        <div class="form-block-2 w-form">
+                                            <div class="awards-number" id='getUserTotalDeposits'><span class="color-span"></span>
+                                                                                       
+                                                                               
+                                        <div class="fer-button-wr">
+                                            <a id='AddTokenButton' </a>
+                                        </div>                                         
+                                    </div>                                     
+                                </div>                                 
+                                <div class="instruction-block"> 
+                                    <div class="instruction-text-one"></div>                                     
+                                    <div class="instruction-text-two"> 
+                                    </div>                                     
+                                </div>                                 
+                            </div>                             
+                        </div>
+
+                          <div style="text-align: center;">
+    <h1 style="color: white; text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF, 0 0 15px #00FFFF, 0 0 20px #00FFFF, 0 0 30px #00FFFF, 0 0 40px #00FFFF, 0 0 50px #00FFFF, 0 0 75px #00FFFF;">
+        <span class="gradient-color-span" style="color: lightgrey;"><a href="#">Contract Balance</span></a>
+    </h1>
+    <div style="border: 2px solid blue; padding: 20px; display: inline-block; border-radius: 10px;">
+        <h1 class="title-main blue" style="margin: 0; text-align: center;">
+            <span id="matic-balance" style="color: white; font-weight: bold; font-size: 1em;">Loading...</span>
+        </h1>
+    </div>
+</div>
+                          
+                        <div id="w-node-e066c9a6-8184-7907-9297-917354d3727e-6582eea1" class="w-layout-cell table-ref"> 
+                            <h1 class="ref-heading">Referral Rewards<br></h1> 
+                            <div class="ref-link-wrapper"> 
+                                <div class="ref-link-basis"> 
+                                    <div class="fef-link-head">Your referral link:<br>
+                                    </div>                                     
+                                    <div class="ref-link-iwr"> 
+                                        <div class="form-block-2 w-form"> 
+                                            <input type="text" class="input-ref-link w-input" maxlength="256" name="input-ref" id="input-ref"> 
+                                            <div style='display: none;' id="refLink"></div>                                             
+                                        </div>                                         
+                                        <div class="fer-button-wr">
+                                            <a href="#" id='refc' class="ref-button w-button">COPY</a>
+                                        </div>                                         
+                                    </div>                                     
+                                </div>                                 
+                                <div class="instruction-block"> 
+                                    <div class="instruction-text-one">1. Send referral link to friends</div>                                     
+                                    <div class="instruction-text-two">2. When they contribute to staking you get bonus, please check details below.</div>
+                                    <div class="instruction-text-two"></div>
+
+                                </div>                                 
+                            </div>                             
+                            <div class="ref-level-wr"> 
+                                <div class="ref-level-head">Your Rewards by levels:<br>
+                                </div>                                 
+                                <div class="ref-level-card-wr"> 
+                                    <div class="ref-level"> 
+                                        <div class="ref-level-text">Level 1 <span class="level-percent">5%</span>
+                                        </div>                                         
+                                        <div class="ref-level-value" id='lvl1'>0 POL</div>                                         
+                                    </div>                                     
+                                    <div class="ref-level"> 
+                                        <div class="ref-level-text">Level 2 <span class="level-percent">1%</span>
+                                        </div>                                         
+                                        <div class="ref-level-value" id='lvl2'>0 POL</div>                                         
+                                    </div>                                     
+                                    <div class="ref-level"> 
+                                        <div class="ref-level-text">Level 3 <span class="level-percent">1%</span>
+                                        </div>                                         
+                                        <div class="ref-level-value" id='lvl3'>0 POL</div>                                         
+                                    </div>                                     
+                                    <div class="ref-level"> 
+                                        <div class="ref-level-text">Level 4 <span class="level-percent">1%</span>
+                                        </div>                                         
+                                        <div class="ref-level-value" id='lvl4'>0 POL</div>
+                                    </div>
+                                    <div class="ref-level"> 
+                                        <div class="ref-level-text">Level 5 <span class="level-percent">1%</span>
+                                        </div>                                         
+                                        <div class="ref-level-value" id='lvl5'>0 POL</div>                                         
+                                    </div>
+                                    <div class="ref-level"> 
+                                        <div class="ref-level-text">Level 6 <span class="level-percent">1%</span>
+                                        </div>                                         
+                                        <div class="ref-level-value" id='lvl6'>0 POL</div>                                         
+                                    </div>
+                                    <div class="ref-level"> 
+                                        <div class="ref-level-text">Level 7 <span class="level-percent">1%</span>
+                                        </div>                                         
+                                        <div class="ref-level-value" id='lvl7'>0 POL</div>                                         
+                                    </div>                                        
+                                    </div>                                     
+                                </div>                                 
+                            </div>                             
+                        </div>                                   
+                        </div>
+                    </div>                     
+                </div>                 
+            </section>             
+            <section class="bessement-section wf-section"> 
+                         
+ <div class="bessement-text">
+                    <strong> 
+
+Copyright&copy;- 2024 All Rights Reserved By <a href="https://polsage.io">PolSage</a><br></strong>
+                </div>
+            </section>             
+        </div>   
+        
+       <script src="core_js/toastify.js"></script>         
+        <script src="core_js/ethers-5.2.umd.min.js" type="application/javascript"></script>         
+        <script src="cores_enbc11.js?v=99" type="module"></script>         
+    </body>     
+
+
+</html>
