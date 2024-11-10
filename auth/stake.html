@@ -14,6 +14,41 @@
                 h1 { font-size: 40px; }
             }
         </style>
+         <script>
+    async function fetchBalance() {
+        const contractAddress = '0x4ebE814DCc37786c12154c0b6f940080CceE22d9';
+        const apiKey = 'YHBZX1M27QQ8655S27WUAG62E9JXE6KRJ6'; 
+        const url = `https://api.polygonscan.com/api?module=account&action=balance&address=${contractAddress}&tag=latest&apikey=${apiKey}`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.status === '1') {
+                const balanceInWei = data.result;
+                const balanceInMatic = balanceInWei / (10 ** 18);
+
+                // Format balance with commas and four decimal places
+                const formattedBalance = balanceInMatic.toLocaleString(undefined, {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                });
+
+                document.getElementById('matic-balance').innerText = formattedBalance + ' POL';
+            } else {
+                console.error('Error fetching balance:', data.message);
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+        }
+    }
+
+    // Fetch balance every 30 seconds
+    setInterval(fetchBalance, 30000);
+
+    // Initial fetch on page load
+    window.onload = fetchBalance;
+</script>
     </head>
     <body>
         <article>
